@@ -3,13 +3,13 @@ import { getWords, getDict } from "./dictionary.js"
 let wordList = JSON.parse(localStorage.getItem("wordlist"))
 if (wordList == undefined || wordList == null) wordList = []
 
-const curMode = localStorage.getItem("mode")
+let curMode = localStorage.getItem("mode")
 if (curMode == undefined || curMode == null) curMode = "dict"
 
-const minLength = localStorage.getItem("minLength")
+let minLength = localStorage.getItem("minLength")
 if (minLength == undefined || minLength == null) minLength = 5
 
-const maxLength = localStorage.getItem("maxLength")
+let maxLength = localStorage.getItem("maxLength")
 if (maxLength == undefined || maxLength == null) maxLength = 5
 
 const dictionary = [...getDict(minLength, maxLength), ...wordList]
