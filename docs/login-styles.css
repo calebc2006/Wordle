@@ -1,0 +1,228 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    font-family: "Courier New", Courier, monospace;
+}
+
+:root {
+    --placeholder-color: hsla(240, 3%, 7%, 0.85);
+    --correctMinClr: white;
+    --correctMaxClr: white;
+}
+
+body {
+    background-color: hsla(240, 3%, 7%, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1em;
+    font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
+    padding-bottom: 50px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-around;
+    /* transform: translateY(50px); */
+    /* margin-bottom: 200px;
+    margin-top: 200px; */
+}
+
+.play-btn {
+    background-color: hsl(240, 3%, 10%);
+    width: 400px;
+    height: 180px;
+    border-radius: 7px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s ease-in-out;
+    border: 3px solid hsl(115, 29%, 43%);
+    color: hsl(115, 29%, 43%);
+    font-weight: bold;
+    margin-bottom: 100px;
+}
+.play-btn:hover {
+    background-color: hsl(115, 29%, 43%);
+    color: aliceblue;
+    border: 3px solid aliceblue;
+}
+
+.login {
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    height: 170px;
+}
+
+#password {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    background-color: inherit;
+    border-bottom: 2px solid var(--placeholder-color);
+}
+#password:focus {
+    border: none;
+    outline: none;
+    border-bottom: 3px solid var(--placeholder-color);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.25rem;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: inherit;
+    border: solid black 2px;
+}
+.login-btn:hover {
+    font-weight: bold;
+    border: solid black 3px;
+}
+
+input {
+    font-size: 1.2rem;
+}
+
+.list {
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 7px;
+    width: 80%;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+.list-item {
+    font-size: 1.3rem;
+}
+.list-item:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+}
+
+.list-grid {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 7px;
+}
+
+.admin-container {
+    margin-bottom: 80px;
+}
+
+*::placeholder {
+    color: var(--placeholder-color);
+}
+
+.back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    height: 3.5rem;
+    width: 3.5rem;
+}
+.back:hover {
+    width: 3.8rem;
+    height: 3.8rem;
+}
+
+.arrow {
+    width: 100%;
+    height: 100%;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.mode-btn {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem;
+    background-color: grey;
+    margin: 0;
+    width: 33.33%;
+    text-align: center;
+}
+.mode-btn:hover {
+    cursor: pointer;
+}
+.selected {
+    font-weight: bold;
+    background-color: aliceblue;
+    transition: background-color 0.3s linear;
+}
+
+.mode-div {
+    position: absolute;
+    top: 25px;
+    background-color: aliceblue;
+    width: 50vw;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: grey;
+    user-select: none;
+}
+
+.lengthSelector {
+    width: 800px;
+    height: fit-content;
+    margin: 80px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.minBox,
+.maxBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: fit-content;
+    color: white;
+}
+
+#minInput,
+#maxInput {
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    background-color: inherit;
+    border: none;
+    margin-left: 8px;
+    color: white;
+}
+#minInput {
+    border-bottom: solid 1px var(--correctMinClr);
+}
+#maxInput {
+    border-bottom: solid 1px var(--correctMaxClr);
+}
+
+#minInput:focus {
+    outline: none;
+    border-bottom: solid 2px var(--correctMinClr);
+}
+#maxInput:focus {
+    outline: none;
+    border-bottom: solid 2px var(--correctMaxClr);
+}
