@@ -6,6 +6,7 @@ let curMode = "dict"
 localStorage.setItem("mode", curMode)
 
 const addBtn = document.getElementById("add-btn")
+const clearBtn = document.getElementById("clear-btn")
 const userInput = document.getElementById("password")
 const listGrid = document.getElementById("list-grid")
 const minInput = document.getElementById("minInput")
@@ -38,6 +39,13 @@ listGrid.addEventListener("click", (e) => {
         localStorage.setItem("wordlist", JSON.stringify(curItems))
         showList()
     }
+})
+
+clearBtn.addEventListener("click", () => {
+    let curItems = []
+    listGrid.innerHTML = ""
+
+    localStorage.setItem("wordlist", JSON.stringify(curItems))
 })
 
 function handleInput() {
@@ -106,7 +114,7 @@ function handleClick(elem) {
 
 setInterval(() => {
     if (minInput.value === "") {
-        localStorage.setItem("minLength", minInput.value)
+        localStorage.setItem("minLength", 5)
         document
             .querySelector(":root")
             .style.setProperty("--correctMinClr", "white")
@@ -122,7 +130,7 @@ setInterval(() => {
     }
 
     if (maxInput.value === "") {
-        localStorage.setItem("maxLength", maxInput.value)
+        localStorage.setItem("maxLength", 5)
         document
             .querySelector(":root")
             .style.setProperty("--correctMaxClr", "white")
@@ -135,5 +143,10 @@ setInterval(() => {
         document
             .querySelector(":root")
             .style.setProperty("--correctMaxClr", "red")
+    }
+
+    if (localStorage.getItem("maxLength") < localStorage.getItem("minLength")) {
+        localStorage.setItem("maxLength", localStorage.getItem("minLength"))
+        maxInput.value = localStorage.getItem("minLength")
     }
 }, 200)

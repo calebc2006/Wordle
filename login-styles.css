@@ -111,8 +111,29 @@ h2 {
     text-decoration: underline;
 }
 
+.list-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.clear-btn {
+    margin: 0;
+    padding: 0.3rem 0.4rem;
+    cursor: pointer;
+    border: solid 2px black;
+    border-radius: 5px;
+    font-weight: normal;
+    font-size: 1.2rem;
+    background-color: inherit;
+}
+
+.clear-btn:hover {
+    font-weight: bold;
+}
+
 .list-item {
     font-size: 1.3rem;
+    margin-right: 2rem;
 }
 .list-item:hover {
     text-decoration: line-through;
@@ -121,8 +142,8 @@ h2 {
 
 .list-grid {
     padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     row-gap: 7px;
 }
 

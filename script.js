@@ -115,12 +115,27 @@ function submitGuess() {
     }
 
     stopInteraction()
-    activeTiles.forEach((...params) => {
-        flipTile(...params, guess)
+    let tempWord = targetWord,
+        i = 0
+
+    activeTiles.forEach((tile, index, array) => {
+        let state = "wrong"
+        console.log(tempWord)
+
+        if (tempWord[i] === tile.innerHTML) {
+            state = "correct"
+            tempWord = tempWord.replace(tile.innerHTML, "-")
+        } else if (tempWord.includes(tile.innerHTML)) {
+            state = "wrong-location"
+            tempWord = tempWord.replace(tile.innerHTML, "-")
+        }
+
+        flipTile(tile, index, array, guess, state)
+        i++
     })
 }
 
-function flipTile(tile, index, array, guess) {
+function flipTile(tile, index, array, guess, state) {
     const letter = tile.dataset.letter
     const key = keyboard.querySelector(`[data-key="${letter.toUpperCase()}"]`)
     setTimeout(() => {
@@ -131,16 +146,9 @@ function flipTile(tile, index, array, guess) {
         "transitionend",
         () => {
             tile.classList.remove("flip")
-            if (targetWord[index] === letter) {
-                tile.dataset.state = "correct"
-                key.classList.add("correct")
-            } else if (targetWord.includes(letter)) {
-                tile.dataset.state = "wrong-location"
-                key.classList.add("wrong-location")
-            } else {
-                tile.dataset.state = "wrong"
-                key.classList.add("wrong")
-            }
+
+            tile.dataset.state = state
+            key.classList.add(state)
 
             if (index === array.length - 1) {
                 tile.addEventListener(
